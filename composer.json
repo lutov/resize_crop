@@ -1,7 +1,7 @@
 {
   "name": "lutov/resize_crop",
   "description": "Resizing and cropping images by Geltishheva Nina, http://recens.ru",
-  "license": "Public Domain",
+  "license": "GPL-3.0+",
   "require": {
     "php": ">=5.3.0"
   },
