@@ -5,9 +5,11 @@
  * @license GPL
  * @copyright Geltishheva Nina (http://recens.ru)
  */
+ 
+use ColorThief\ColorThief;
 
-class ResizeCrop
-{
+class ResizeCrop {
+	
 	/**
 	 * @param $file_input
 	 * @param $file_output
@@ -86,7 +88,11 @@ class ResizeCrop
 			$h_o -= $y_o;
 		}
 		$img_o = imagecreatetruecolor($w_o, $h_o);
-		imagecopy($img_o, $img, 0, 0, $x_o, $y_o, $w_o, $h_o);
+		$avg_color = ColorThief::getColor($img);
+		$bg_color = imagecolorallocate($img_o, $avg_color[0], $avg_color[1], $avg_color[2]);			
+		imagefill($img_o, 0, 0, $bg_color);
+		imagecolortransparent($img, 000000);
+		imagecopymerge($img_o, $img, 0, 0, $x_o, $y_o, $w_o, $h_o, 100);
 		if ($type == 2) {
 			return imagejpeg($img_o, $file_output, 100);
 		} else {
@@ -94,4 +100,5 @@ class ResizeCrop
 			return $func($img_o, $file_output);
 		}
 	}
+	
 }
