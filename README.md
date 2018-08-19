@@ -1,4 +1,4 @@
 resize_crop
 ===========
 
-Resizes and cropps images. Automatically creates background from average image color, if cropped into different ratio.
+Resize and crop images. Automatically create background from average image color.
