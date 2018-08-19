@@ -1,4 +1,4 @@
 resize_crop
 ===========
 
-Resizing and cropping images by Geltishheva Nina (http://recens.ru)
+Resizes and cropps images. Automatically creates background from average image color, if cropped into different ratio.
