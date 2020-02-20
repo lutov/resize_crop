@@ -21,9 +21,7 @@ class ResizeCrop {
 	public static function resize($file_input, $file_output, $w_o, $h_o, $percent = false) {
 		
 		list($w_i, $h_i, $type) = getimagesize($file_input);
-		if (!$w_i || !$h_i) {
-			return false;
-		}
+		if (!$w_i || !$h_i) {return false;}
 		
 		$types = array('', 'gif', 'jpeg', 'png');
 		$ext = $types[$type];
@@ -45,7 +43,7 @@ class ResizeCrop {
 		$img_o = imagecreatetruecolor($w_o, $h_o);
 		imagecopyresampled($img_o, $img, 0, 0, 0, 0, $w_o, $h_o, $w_i, $h_i);
 		if ($type == 2) {
-			return imagejpeg($img_o, $file_output, 100);
+			return imagewebp($img_o, $file_output, 100);
 		} else {
 			$func = 'image' . $ext;
 			return $func($img_o, $file_output);
@@ -101,7 +99,7 @@ class ResizeCrop {
 		imagecolortransparent($img, 000000);
 		imagecopymerge($img_o, $img, 0, 0, $x_o, $y_o, $w_o, $h_o, 100);
 		if ($type == 2) {
-			return imagejpeg($img_o, $file_output, 100);
+			return imagewebp($img_o, $file_output, 100);
 		} else {
 			$func = 'image' . $ext;
 			return $func($img_o, $file_output);
