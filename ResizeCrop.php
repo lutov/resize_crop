@@ -23,7 +23,7 @@ class ResizeCrop {
 		list($w_i, $h_i, $type) = getimagesize($file_input);
 		if (!$w_i || !$h_i) {return false;}
 		
-		$types = array('', 'gif', 'jpeg', 'png');
+		$types = array('', 'gif', 'jpeg', 'png', 'webp');
 		$ext = $types[$type];
 		if ($ext) {
 			$func = 'imagecreatefrom' . $ext;
@@ -42,12 +42,8 @@ class ResizeCrop {
 		
 		$img_o = imagecreatetruecolor($w_o, $h_o);
 		imagecopyresampled($img_o, $img, 0, 0, 0, 0, $w_o, $h_o, $w_i, $h_i);
-		if ($type == 2) {
-			return imagewebp($img_o, $file_output, 100);
-		} else {
-			$func = 'image' . $ext;
-			return $func($img_o, $file_output);
-		}
+		return imagewebp($img_o, $file_output, 100);
+
 	}
 
 	/**
@@ -64,7 +60,7 @@ class ResizeCrop {
 			return false;
 		}
 		
-		$types = array('', 'gif', 'jpeg', 'png');
+		$types = array('', 'gif', 'jpeg', 'png', 'webp');
 		$ext = $types[$type];
 		if ($ext) {
 			$func = 'imagecreatefrom' . $ext;
@@ -98,12 +94,7 @@ class ResizeCrop {
 		imagefill($img_o, 0, 0, $bg_color);
 		imagecolortransparent($img, 000000);
 		imagecopymerge($img_o, $img, 0, 0, $x_o, $y_o, $w_o, $h_o, 100);
-		if ($type == 2) {
-			return imagewebp($img_o, $file_output, 100);
-		} else {
-			$func = 'image' . $ext;
-			return $func($img_o, $file_output);
-		}
+		return imagewebp($img_o, $file_output, 100);
 		
 	}
 	
