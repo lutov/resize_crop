@@ -1,7 +1,7 @@
 {
 	"name": "lutov/resize_crop",
 	"description": "Resize and crop images",
-	"license": "Public Domain",
+	"license": "GPL-3.0+",
 	"require": {
 		"php": ">=7.1",
 		"ksubileau/color-thief-php": "^1.3",
